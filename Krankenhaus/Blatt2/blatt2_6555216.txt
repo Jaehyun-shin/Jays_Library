@@ -1,0 +1,43 @@
+/*%%%%head%%{"type":"submission","name":"blatt2","authors":[["Jae Hyun Shin","autoshin0322@gmail.com","6555216"]]}%%*/
+/*%%1a%%*/
+/* a) */
+select pnr, name from Mitarbeiter
+where gebdat > 19000101;
+
+/*%%1b%%*/
+/* b) */
+select distinct plz from mitarbeiter;
+
+/*%%1c%%*/
+/* c) */
+select p.pnr from pfleger p, station s
+	where s.name = "Chirurgie" and p.pnr = s.stationid;
+
+/*%%1d%%*/
+/* d) */
+select pnr, name from mitarbeiter
+	where ort = "london";
+
+/*%%1e%%*/
+/* e) */
+select min(preis) as "niedrigster Preis" from medikament;
+
+/*%%1f%%*/
+/* f) */
+select name, preis from medikament
+	where preis = (select min(preis) from medikament)
+
+/*%%1g%%*/
+/* g) */
+select produzent, name from medikament
+	where preis > (select avg(preis) from medikament);
+
+/*%%1h%%*/
+/* h) */
+select d.fachname from diagnostiziert d, arzt a
+	where d.pnr = a.pnr;
+
+/*%%1i%%*/
+/* i) */
+select m.pnr, m.name from mitarbeiter m
+	where m.pnr in (select a.pnr from arzt a);
